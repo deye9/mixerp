@@ -40,8 +40,7 @@ namespace MixERP.Net.FrontEnd
     {
         protected void Page_Init(object sender, EventArgs e)
         {
-            this.CreateControls(this.Placeholder1);
-            this.CreateDimmer(this.Placeholder1);
+            this.AddCss();
             this.AddJavascript();
         }
 
@@ -53,6 +52,7 @@ namespace MixERP.Net.FrontEnd
             try
             {
                 this.BindBranchDropDownList();
+                this.BindLanguageDropDownList();
             }
             catch
             {
@@ -64,7 +64,7 @@ namespace MixERP.Net.FrontEnd
                 return;
             }
 
-            if (branchSelect.Items.Count.Equals(0))
+            if (BranchSelect.Items.Count.Equals(0))
             {
                 this.Response.Redirect("~/Install.aspx");
             }
@@ -88,8 +88,27 @@ namespace MixERP.Net.FrontEnd
         {
             IEnumerable<DbGetOfficesResult> offices = Offices.GetOffices();
 
-            this.branchSelect.DataSource = offices;
-            this.branchSelect.DataBind();
+            this.BranchSelect.DataTextField = "OfficeName";
+            this.BranchSelect.DataValueField = "OfficeId";
+            this.BranchSelect.DataSource = offices;
+            this.BranchSelect.DataBind();
+        }
+
+        private void BindLanguageDropDownList()
+        {
+            LanguageSelect.DataTextField = "Text";
+            LanguageSelect.DataValueField = "Value";
+            LanguageSelect.DataSource = GetLanguages();
+            LanguageSelect.DataBind();
+
+            for (int i = 0; i < LanguageSelect.Items.Count; i++)
+            {
+                if (LanguageSelect.Items[i].Value.Equals(CultureInfo.CurrentUICulture.Name))
+                {
+                LanguageSelect.Items[i].Selected = true;
+                    break;
+                }
+            }
         }
 
         private void CheckDbConnectivity()
@@ -113,8 +132,17 @@ namespace MixERP.Net.FrontEnd
             this.Response.Redirect("~/Site/offline.html");
         }
 
+        private void AddCss()
+        {
+            PageUtility.AddCssFiles(this.Page, "master-page", "/bundles/stylesheets/master-page.min.css");
+        }
+
         private void AddJavascript()
         {
+            PageUtility.RegisterJavascriptFiles("bundles_libraries_min", "/bundles/scripts/libraries.min.js", this.Page);
+            PageUtility.RegisterJavascriptFiles("sha", "/Scripts/jssha1.5/src/sha.js", this.Page);
+            PageUtility.RegisterJavascriptFiles("SignIn", "/Scripts/Pages/SignIn.aspx.js", this.Page);
+
             string challenge = Guid.NewGuid().ToString().Replace("-", "");
             this.Session["Challenge"] = challenge;
 
@@ -124,321 +152,13 @@ namespace MixERP.Net.FrontEnd
             script += JSUtility.GetVar("decimalSeparator", LocalizationHelper.GetDecimalSeparator());
             script += JSUtility.GetVar("currencyDecimalPlaces", LocalizationHelper.GetCurrencyDecimalPlaces());
 
-
             PageUtility.RegisterJavascript("SignInPage_Vars", script, this.Page, true);
-        }
-
-        #region Controls
-
-        private HtmlSelect branchSelect;
-
-        private void CreateDimmer(Control container)
-        {
-            using (HtmlGenericControl pageDimmer = new HtmlGenericControl("div"))
-            {
-                pageDimmer.Attributes.Add("class", "ui page dimmer");
-
-                using (HtmlGenericControl content = new HtmlGenericControl("div"))
-                {
-                    content.Attributes.Add("class", "content");
-
-                    using (HtmlGenericControl center = new HtmlGenericControl("div"))
-                    {
-                        center.Attributes.Add("class", "center");
-
-                        using (HtmlGenericControl header = new HtmlGenericControl("div"))
-                        {
-                            header.Attributes.Add("class", "ui yellow huge icon header");
-
-                            using (HtmlGenericControl icon = new HtmlGenericControl("i"))
-                            {
-                                icon.Attributes.Add("class", "ui inverted yellow setting loading icon");
-
-                                header.Controls.Add(icon);
-                            }
-
-                            using (Literal literal = new Literal())
-                            {
-                                literal.Text = Titles.SigningIn;
-                                header.Controls.Add(literal);
-                            }
-
-                            using (HtmlGenericControl subHeader = new HtmlGenericControl("div"))
-                            {
-                                subHeader.Attributes.Add("class", "ui yellow sub header");
-                                subHeader.InnerText = Labels.JustAMomentPlease;
-                                header.Controls.Add(subHeader);
-                            }
-
-
-                            center.Controls.Add(header);
-                        }
-
-                        content.Controls.Add(center);
-                    }
-
-                    pageDimmer.Controls.Add(content);
-                }
-
-                container.Controls.Add(pageDimmer);
-            }
-        }
-
-        private void CreateControls(Control container)
-        {
-            using (HtmlGenericControl signInForm = new HtmlGenericControl("div"))
-            {
-                signInForm.Attributes.Add("id", "signin-form");
-                this.CreateLogo(signInForm);
-                this.CreateForm(signInForm);
-
-                container.Controls.Add(signInForm);
-            }
-        }
-
-        private void CreateLogo(HtmlGenericControl container)
-        {
-            using (HtmlAnchor anchor = new HtmlAnchor())
-            {
-                anchor.HRef = "/SignIn.aspx";
-
-                using (HtmlImage image = new HtmlImage())
-                {
-                    image.Src = this.ResolveClientUrl("~/Resource/Static/images/mixerp-logo.png");
-                    anchor.Controls.Add(image);
-                }
-                container.Controls.Add(anchor);
-            }
-        }
-
-        #region Form
-
-        private void AddBranchField(HtmlGenericControl container)
-        {
-            using (HtmlGenericControl field = new HtmlGenericControl("div"))
-            {
-                field.Attributes.Add("class", "field");
-
-                using (HtmlGenericControl label = HtmlControlHelper.GetLabel(Titles.SelectYourBranch, "BranchSelect"))
-                {
-                    field.Controls.Add(label);
-                }
-
-                this.branchSelect = new HtmlSelect();
-                this.branchSelect.ID = "BranchSelect";
-                this.branchSelect.DataTextField = "OfficeName";
-                this.branchSelect.DataValueField = "OfficeId";
-
-                field.Controls.Add(this.branchSelect);
-
-                container.Controls.Add(field);
-            }
-        }
-
-        private static void AddDivider(HtmlGenericControl container)
-        {
-            using (HtmlGenericControl divider = new HtmlGenericControl("div"))
-            {
-                divider.Attributes.Add("class", "ui divider");
-                container.Controls.Add(divider);
-            }
-        }
-
-        private static void AddExceptionField(HtmlGenericControl container)
-        {
-            using (HtmlGenericControl exceptionField = new HtmlGenericControl("div"))
-            {
-                exceptionField.Attributes.Add("class", "exception field");
-                container.Controls.Add(exceptionField);
-            }
-        }
-
-        private static void AddIconDivider(HtmlGenericControl container)
-        {
-            using (HtmlGenericControl iconDivider = new HtmlGenericControl("div"))
-            {
-                iconDivider.Attributes.Add("class", "ui horizontal icon divider");
-
-                using (HtmlGenericControl icon = new HtmlGenericControl("i"))
-                {
-                    icon.Attributes.Add("class", "circular user icon");
-                    iconDivider.Controls.Add(icon);
-                }
-
-                container.Controls.Add(iconDivider);
-            }
-        }
-
-        private void AddLanguageField(HtmlGenericControl container)
-        {
-            using (HtmlGenericControl field = new HtmlGenericControl("div"))
-            {
-                field.Attributes.Add("class", "field");
-
-                using (HtmlGenericControl label = HtmlControlHelper.GetLabel(Titles.SelectLanguage, "LanguageSelect"))
-                {
-                    field.Controls.Add(label);
-                }
-
-                using (DropDownList languageSelect = new DropDownList())
-                {
-                    languageSelect.ID = "LanguageSelect";
-                    languageSelect.DataTextField = "Text";
-                    languageSelect.DataValueField = "Value";
-                    languageSelect.DataSource = GetLanguages();
-                    languageSelect.DataBind();
-
-
-                    for (int i = 0; i < languageSelect.Items.Count; i++)
-                    {
-                        if (languageSelect.Items[i].Value.Equals(CultureInfo.CurrentUICulture.Name))
-                        {
-                            languageSelect.Items[i].Selected = true;
-                            break;
-                        }
-                    }
-
-
-                    field.Controls.Add(languageSelect);
-                }
-                container.Controls.Add(field);
-            }
-        }
-
-        private static void AddPasswordField(HtmlGenericControl container)
-        {
-            using (HtmlGenericControl field = new HtmlGenericControl("div"))
-            {
-                field.Attributes.Add("class", "field");
-
-                using (HtmlGenericControl label = HtmlControlHelper.GetLabel(Titles.Password, "PasswordInputPassword"))
-                {
-                    field.Controls.Add(label);
-                }
-
-                using (HtmlInputPassword passwordInputPassword = new HtmlInputPassword())
-                {
-                    passwordInputPassword.ID = "PasswordInputPassword";
-                    passwordInputPassword.Attributes.Add("placeholder", Titles.Password);
-                    field.Controls.Add(passwordInputPassword);
-                }
-
-                container.Controls.Add(field);
-            }
-        }
-
-        private static void AddRememberMeField(HtmlGenericControl container)
-        {
-            using (HtmlGenericControl field = new HtmlGenericControl("div"))
-            {
-                field.Attributes.Add("class", "field");
-
-
-                using (HtmlGenericControl toggleCheckBox = new HtmlGenericControl("div"))
-                {
-                    toggleCheckBox.Attributes.Add("class", "ui toggle checkbox");
-
-
-                    using (HtmlInputCheckBox rememberInputCheckBox = new HtmlInputCheckBox())
-                    {
-                        rememberInputCheckBox.ID = "RememberInputCheckBox";
-                        toggleCheckBox.Controls.Add(rememberInputCheckBox);
-                    }
-
-                    using (HtmlGenericControl label = HtmlControlHelper.GetLabel(Titles.RememberMe))
-                    {
-                        toggleCheckBox.Controls.Add(label);
-                    }
-
-
-                    field.Controls.Add(toggleCheckBox);
-                }
-
-                container.Controls.Add(field);
-            }
-        }
-
-        private static void AddSignInButtonField(HtmlGenericControl container)
-        {
-            using (HtmlGenericControl field = new HtmlGenericControl("div"))
-            {
-                field.Attributes.Add("class", "field");
-
-                using (HtmlInputButton signInButton = new HtmlInputButton())
-                {
-                    signInButton.ID = "SignInButton";
-                    signInButton.Value = Titles.SignIn;
-                    signInButton.Attributes.Add("title", "CRTL + RETURN");
-                    signInButton.Attributes.Add("class", "ui teal button");
-                    field.Controls.Add(signInButton);
-                }
-
-                container.Controls.Add(field);
-            }
-        }
-
-        private static void AddUserIdField(HtmlGenericControl container)
-        {
-            using (HtmlGenericControl field = new HtmlGenericControl("div"))
-            {
-                field.Attributes.Add("class", "field");
-
-                using (HtmlGenericControl label = HtmlControlHelper.GetLabel(Titles.UserId, "UsernameInputText"))
-                {
-                    field.Controls.Add(label);
-                }
-
-                using (HtmlInputText usernameInputText = new HtmlInputText())
-                {
-                    usernameInputText.ID = "UsernameInputText";
-                    usernameInputText.Attributes.Add("placeholder", Titles.UserId);
-                    field.Controls.Add(usernameInputText);
-
-                    container.Controls.Add(field);
-                }
-            }
-        }
-
-        private void CreateForm(HtmlGenericControl container)
-        {
-            using (HtmlGenericControl form = new HtmlGenericControl("div"))
-            {
-                form.Attributes.Add("class", "ui form segment");
-                form.Attributes.Add("style", "padding:24px 48px;");
-
-                CreateHeader(form);
-                AddDivider(form);
-                AddUserIdField(form);
-                AddPasswordField(form);
-                AddRememberMeField(form);
-                AddIconDivider(form);
-                this.AddBranchField(form);
-                this.AddLanguageField(form);
-                AddExceptionField(form);
-                AddSignInButtonField(form);
-
-                container.Controls.Add(form);
-            }
-        }
-
-        private static void CreateHeader(HtmlGenericControl container)
-        {
-            using (HtmlGenericControl header = new HtmlGenericControl("div"))
-            {
-                header.Attributes.Add("class", "ui large header");
-                header.Attributes.Add("style", "8px 0;");
-
-                header.InnerText = Titles.SignIn;
-
-                container.Controls.Add(header);
-            }
         }
 
         private static Collection<ListItem> GetLanguages()
         {
             string[] cultures = ConfigurationHelper.GetMixERPParameter("cultures").Split(',');
             Collection<ListItem> items = new Collection<ListItem>();
-
 
             foreach (string culture in cultures)
             {
@@ -456,8 +176,5 @@ namespace MixERP.Net.FrontEnd
             return items;
         }
 
-        #endregion
-
-        #endregion
     }
 }

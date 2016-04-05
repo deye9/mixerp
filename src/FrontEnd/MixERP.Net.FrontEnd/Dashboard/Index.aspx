@@ -20,23 +20,20 @@ along with MixERP.  If not, see <http://www.gnu.org/licenses />.
 <%@ Page Title="" Language="C#" MasterPageFile="~/MixERPMaster.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="MixERP.Net.FrontEnd.Dashboard.Index" %>
 <%@ Import Namespace="MixERP.Net.FrontEnd.Cache" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="ScriptContentPlaceholder" runat="server">
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="StyleSheetContentPlaceholder" runat="server">
-</asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="BodyContentPlaceholder" runat="server">
+
     <div id="sortable-container" class="ui stackable grid">
         <asp:PlaceHolder ID="WidgetPlaceholder" runat="server"/>
     </div>
 
     <div style="clear: both;"></div>
+
     <br/>
 
-    <div class="ui tiny buttons">
+  <%--  <div class="ui tiny buttons">
         <button class="ui button">Save Position</button>
         <div class="or"></div>
         <button class="ui button">Widget Manager</button>
-    </div>
-</asp:Content>
-<asp:Content ID="Content4" ContentPlaceHolderID="BottomScriptContentPlaceholder" runat="server">    
+    </div>--%>
+
 </asp:Content>

@@ -23,7 +23,7 @@ along with MixERP.  If not, see <http://www.gnu.org/licenses/>.
   <appSettings>
     <add key="Server" value="localhost" />
     <add key="Port" value="5432" />
-    <add key="Database" value="mixerp" />
+    <add key="Database" value="mixerp_data" />
     <add key="UserId" value="mix_erp" />
     <add key="Password" value="change-on-deployment" />
 

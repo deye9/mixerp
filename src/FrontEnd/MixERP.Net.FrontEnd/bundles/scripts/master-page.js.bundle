@@ -12,7 +12,7 @@
   <files>
     <!--Libraries Start -->
 
-    <file>/Scripts/jquery-1.9.1.js</file>
+    <file>/Scripts/jquery-2.2.1.js</file>
     <file>/Scripts/jquery.address.js</file>
     <file>/Scripts/jquery-ui.js</file>
     <file>/Scripts/shortcut.js</file>

@@ -34,7 +34,6 @@ namespace MixERP.Net.FrontEnd.Dashboard
             this.IsLandingPage = true;
         }
 
-
         protected void Page_Load(object sender, EventArgs e)
         {
             IEnumerable<Widget> widgets = Data.Core.Widget.GetWidgets();
@@ -57,19 +56,22 @@ namespace MixERP.Net.FrontEnd.Dashboard
             {
                 return;
             }
-
+            string[] ExemptWidgets = new string[] { "OfficeInformationWidget", "LinksWidget", "WorkflowWidget" };
             var groups = widgetModels.OrderBy(x => x.RowNumber).ThenBy(x => x.ColumnNumber).GroupBy(x => new {x.RowNumber});
 
             foreach (var group in groups)
             {
                 foreach (Widget item in group)
                 {
-                    using (MixERPWidgetBase widget = page.LoadControl(item.WidgetSource) as MixERPWidgetBase)
+                    if (!ExemptWidgets.Contains(item.WidgetName))
                     {
-                        if (widget != null)
+                        using (MixERPWidgetBase widget = page.LoadControl(item.WidgetSource) as MixERPWidgetBase)
                         {
-                            placeholder.Controls.Add(widget);
-                            widget.OnControlLoad(widget, new EventArgs());
+                            if (widget != null)
+                            {
+                                placeholder.Controls.Add(widget);
+                                widget.OnControlLoad(widget, new EventArgs());
+                            }
                         }
                     }
                 }

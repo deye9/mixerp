@@ -58,12 +58,15 @@ body {
   width: 300px !important;
   overflow: hidden;
 }
-.sidebar,
+.sidebar {
+    color: #a7b1c2;
+    background-color:#243747;
+}
 #SignInBody {
-  background-color: #67238b;
+  background-color: whitesmoke;
 }
 .theme {
-  background-color: #67238b !important;
+  background-color: #233646  !important;
 }
 footer {
   background-color: #f7f1fb;
@@ -72,9 +75,8 @@ footer {
   padding: 12px;
 }
 #SearchInput {
-  background-color: #5f1488;
-  border-color: #5f1488;
-  color: #dbb7ed;
+  background-color: #fcfcfc;
+  color: #000000;
 }
 #SearchInput:hover,
 #SearchInput:active,
@@ -85,7 +87,9 @@ footer {
   -webkit-box-shadow: none;
 }
 #tree {
-  color: #dbb7ed;
+  color: #cce2ff; /*#6c6f71;*/
+  font-size:13px;
+  padding:14px 20px 14px 0px;
 }
 /* Padding Start*/
 .pad8 {
@@ -238,14 +242,15 @@ h6:hover {
 .dropdown li a {
   font-size: 11px;
 }
-#signin-form {
-  position: fixed;
-  top: 50%;
-  left: 50%;
+.signin-form {
+  /*position: fixed;
+  top: 50%;*/
+  right: 50%;
   width: 400px;
-  margin-top: -300px;
+  margin-top: 90px;
+  text-align:justify;
   /*set to a negative number 1/2 of your height*/
-  margin-left: -200px;
+  margin-left: 30px;
   /*set to a negative number 1/2 of your width*/
 }
 .widget {
@@ -383,13 +388,13 @@ textarea {
 .jstree-wholerow-hovered,
 .jstree-hovered,
 .jstree-default .jstree-wholerow-clicked {
-  background: #4E0572 !important;
-  background: -moz-linear-gradient(top, #4e0572 0%, #570680 100%) !important;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #4e0572), color-stop(100%, #570680));
-  background: -webkit-linear-gradient(top, #4e0572 0%, #570680 100%);
-  background: -o-linear-gradient(top, #4e0572 0%, #570680 100%);
-  background: -ms-linear-gradient(top, #4e0572 0%, #570680 100%);
-  background: linear-gradient(to bottom, #4e0572 0%, #570680 100%);
+  background: #243747 !important;
+  background: -moz-linear-gradient(top, #243747 0%, #570680 100%) !important;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #243747), color-stop(100%, #570680));
+  background: -webkit-linear-gradient(top, #243747 0%, #570680 100%);
+  background: -o-linear-gradient(top, #243747 0%, #570680 100%);
+  background: -ms-linear-gradient(top, #243747 0%, #570680 100%);
+  background: linear-gradient(to bottom, #243747 0%, #570680 100%);
   /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@color1', endColorstr='@color2',GradientType=0 );*/
   color: #FFFFFF !important;
 }

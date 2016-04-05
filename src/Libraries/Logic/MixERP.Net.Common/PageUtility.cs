@@ -41,6 +41,18 @@ namespace MixERP.Net.Common
             }
         }
 
+        public static void AddCssFiles(Page page, string name, string FilePath)
+        {
+            using (HtmlLink stylesheet = new HtmlLink())
+            {
+                stylesheet.Href = FilePath;
+                stylesheet.Attributes["rel"] = "stylesheet";
+                stylesheet.Attributes["type"] = "text/css";
+                stylesheet.Attributes["media"] = "all";
+                page.Header.Controls.Add(stylesheet);
+            }
+        }
+
         private static string GetUserHostAddress()
         {
             string host = string.Empty;
@@ -260,6 +272,28 @@ namespace MixERP.Net.Common
             if (page != null)
             {
                 page.Response.Redirect(page.Request.Url.AbsolutePath);
+            }
+        }
+
+        public static void RegisterJavascriptFiles(string csname, string FileSrc, Page page)
+        {
+            if (page == null)
+            {
+                page = HttpContext.Current.Handler as Page;
+            }
+
+            if (page == null)
+            {
+                throw new InvalidOperationException(Resources.Warnings.CouldNotRegisterJavascript);
+            }
+
+            // Get a ClientScriptManager reference from the Page class.
+            ClientScriptManager cs = page.ClientScript;
+
+            // Check to see if the client script is already registered.
+            if (!cs.IsClientScriptBlockRegistered(page.GetType(), csname))
+            {
+                cs.RegisterClientScriptInclude(csname, page.ResolveClientUrl(FileSrc));
             }
         }
 

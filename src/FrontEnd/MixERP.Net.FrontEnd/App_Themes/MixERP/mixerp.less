@@ -33,9 +33,9 @@ along with MixERP.  If not, see <http://www.gnu.org/licenses/>.
 @sidebar-float: left;
 @top-panel-float: right;
 @top-panel-float-other: left;
-@sidebar-background-color: #67238b;
+@sidebar-background-color: #243747;
 @search-background-color: #5f1488;
-@search-text-color: #dbb7ed;
+@search-text-color: #6c6f71;
 @search-border-hover-color: #754092;
 
 html, body, form, table, div, span, p, option, ul, li, ol, button, a, input, select, table, tr, th, td, canvas, h1, h2, h3, h4, h5, h6 {
@@ -57,8 +57,13 @@ body {
     overflow: hidden;
 }
 
-.sidebar, #SignInBody {
+.sidebar {
+    color: #FFFFFF;
     background-color: @sidebar-background-color;
+}
+
+#SignInBody {
+    background-color: whitesmoke;
 }
 
 .theme {
@@ -278,13 +283,14 @@ h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover {
 }
 
 #signin-form {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 400px;
-    margin-top: -300px; /*set to a negative number 1/2 of your height*/
-    margin-left: -200px; /*set to a negative number 1/2 of your width*/
-}
+  /*position: fixed;
+  top: 50%;*/
+  right: 50%;
+  width: 400px;
+  margin-top: 90px;
+  /*set to a negative number 1/2 of your height*/
+  margin-left: 30px;
+  /*set to a negative number 1/2 of your width*/
 
 .widget {
     height: 100%;

@@ -23,6 +23,7 @@
     </TargetFrameworkProfile>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -60,25 +61,25 @@
       <HintPath>..\..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.2.0\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Owin, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Microsoft.Owin.2.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Microsoft.Owin.Host.SystemWeb.2.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -95,9 +96,9 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="System.Net.Http.Formatting, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Client.5.2.2\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Web.DynamicData" />
@@ -109,36 +110,36 @@
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.Helpers.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="System.Web.Http, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Core.5.2.2\lib\net45\System.Web.Http.dll</HintPath>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="System.Web.Http.WebHost, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.2\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="System.Web.Mvc, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Microsoft.AspNet.Mvc.5.0.0\lib\net45\System.Web.Mvc.dll</HintPath>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -717,7 +718,6 @@
     <Content Include="Install.aspx" />
     <Content Include="MixERP.Installation.xml" />
     <Content Include="Modules\Default.aspx" />
-    <Content Include="Resource\Backups\index.html" />
     <Content Include="Resource\Configuration\AttachmentFactoryParameters.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -739,12 +739,10 @@
     <Content Include="Resource\Icons\insert-16.png" />
     <Content Include="Resource\Icons\print-16.png" />
     <Content Include="Resource\Icons\top-16.png" />
-    <Content Include="Resource\Static\Emails\index.html" />
     <Content Include="Resource\Static\images\index.html" />
     <Content Include="Resource\Static\images\not-image-file.png" />
     <Content Include="Resource\Static\Templates\EmailTemplate.html" />
     <Content Include="Resource\Static\Templates\index.html" />
-    <Content Include="Resource\Temp\Images\index.html" />
     <Content Include="robots.txt" />
     <Content Include="Scripts\ajax-file-upload.js" />
     <Content Include="packages.config" />
@@ -801,8 +799,8 @@
     <Content Include="bundles\scripts\parties-popup.min.js.gzip">
       <DependentUpon>parties-popup.min.js</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\ERP-Server - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <None Include="Scripts\jquery-1.6.4-vsdoc.js" />
     <Content Include="Scripts\colorpicker\.gitignore" />
     <Content Include="Scripts\colorpicker\i18n\jquery.ui.colorpicker-de.js" />
     <Content Include="Scripts\colorpicker\i18n\jquery.ui.colorpicker-en.js" />
@@ -832,8 +830,8 @@
     <Content Include="Scripts\colorpicker\swatches\jquery.ui.colorpicker-pantone.js" />
     <Content Include="Scripts\colorpicker\swatches\jquery.ui.colorpicker-ral-classic.js" />
     <Content Include="Scripts\Datamaps\datamaps.all.min.js" />
-    <Content Include="Scripts\jquery-1.6.4.js" />
-    <Content Include="Scripts\jquery-1.6.4.min.js" />
+    <Content Include="Scripts\jquery-2.2.1.js" />
+    <Content Include="Scripts\jquery-2.2.1.min.js" />
     <Content Include="Scripts\jquery-ui.min.js" />
     <Content Include="Scripts\jquery-ui\css\custom-theme\images\ui-bg_diagonals-thick_90_eeeeee_40x40.png" />
     <Content Include="Scripts\jquery-ui\css\custom-theme\images\ui-bg_flat_15_cd0a0a_40x100.png" />
@@ -1165,7 +1163,6 @@
     <Content Include="Site\Account\ChangePassword.aspx" />
     <Content Include="Site\Account\SignOut.aspx" />
     <Content Include="Resource\Static\AccessIsDenied.html" />
-    <Content Include="Resource\Static\Attachments\index.html" />
     <Content Include="Resource\Static\Templates\ModalTemplate.html" />
     <Content Include="Dashboard\Index.aspx" />
     <Content Include="General\ItemSelector.aspx" />
@@ -1201,13 +1198,11 @@
     <Content Include="Resource\Icons\pdf-16.png" />
     <Content Include="Resource\Icons\search-16.png" />
     <Content Include="Resource\Icons\signout-16.png" />
-    <Content Include="Resource\Temp\index.html" />
     <Content Include="Site\AccessIsDenied.aspx" />
     <Content Include="Site\RuntimeError.aspx" />
     <Content Include="Scripts\chartjs\Chart.min.js" />
     <Content Include="Scripts\chartjs\legend.js" />
     <Content Include="Scripts\date.js" />
-    <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\shortcut.js" />
     <Content Include="SignIn.aspx" />
@@ -1267,14 +1262,18 @@
     <Content Include="bundles\scripts\master-page.min.js.gzip">
       <DependentUpon>master-page.min.js</DependentUpon>
     </Content>
-    <Content Include="bundles\scripts\libraries.js.bundle" />
+    <Content Include="bundles\scripts\libraries.js.bundle">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="bundles\scripts\libraries.min.js.map">
       <DependentUpon>libraries.min.js</DependentUpon>
     </Content>
     <Content Include="bundles\scripts\libraries.min.js.gzip">
       <DependentUpon>libraries.min.js</DependentUpon>
     </Content>
-    <None Include="bundles\stylesheets\master-page.css.bundle" />
+    <None Include="bundles\stylesheets\master-page.css.bundle">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="bundles\scripts\parties-popup.js.bundle" />
     <Content Include="bundles\scripts\parties-popup.min.js.map">
       <DependentUpon>parties-popup.min.js</DependentUpon>
@@ -1312,6 +1311,7 @@
     <Content Include="Tests\all-tests.min.js.gzip">
       <DependentUpon>all-tests.min.js</DependentUpon>
     </Content>
+    <Content Include="Scripts\jquery-2.2.1.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1321,8 +1321,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Handlers\" />
+    <Folder Include="Resource\Backups\" />
     <Folder Include="Resource\Frameworks\" />
     <Folder Include="Resource\Logo\" />
+    <Folder Include="Resource\Static\Attachments\" />
+    <Folder Include="Resource\Static\Emails\" />
+    <Folder Include="Resource\Temp\Images\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Libraries\Logic\MixERP.Net.Entities\MixERP.Net.Entities.csproj">

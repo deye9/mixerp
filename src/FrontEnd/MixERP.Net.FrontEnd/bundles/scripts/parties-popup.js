@@ -1,4 +1,4 @@
-﻿///#source 1 1 /Scripts/jquery-1.9.1.js
+﻿///#source 1 1 /Scripts/jquery-2.2.1.js
 (function( window, undefined ) {
 // Can't do this because several apps including ASP.NET trace
 // the stack via arguments.caller.callee and Firefox dies if

@@ -517,7 +517,8 @@ body {
   padding: 0px;
   min-width: 278px;
   background: #f7f7f7;
-  font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  /*font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;*/
+  font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.33;
   color: rgba(0, 0, 0, 0.8);
@@ -4888,7 +4889,7 @@ i.flag.zimbabwe:before {
   font-weight: bold;
   line-height: 1.33em;
   text-transform: none;
-  color: rgba(0, 0, 0, 0.8);
+  color: #6c6f71;
 }
 
 .ui.header:first-child {
@@ -10260,7 +10261,7 @@ ol.ui.list ol,
   margin: 0em;
   font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
   font-weight: bold;
-  color: rgba(0, 0, 0, 0.8);
+  color: #787b7c;
 }
 
 .ui.list .list > .item .description,
